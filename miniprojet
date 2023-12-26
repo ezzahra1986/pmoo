@@ -34,18 +34,18 @@ def AjouterEnseignants(code, nom, prenom, matiere):
     else:
         print("L'enseignant existe déjà")
 
-def CourExists(code):
-    with open('cours.txt', 'r') as file_courses:
-        for line in file_courses:
+def CourExiste(code):
+    with open('cours.txt', 'r') as C:
+        for line in C:
             parts = line.split('\n')
             if parts[0] == code:
                 return True
         return False
 
 def AjouterCour(code, titre,matiere):
-    if not CourExists(code):
+    if not CourExiste(code):
         with open('courses.txt', 'a') as C:
             C.write(code + "\n" + titre + "\n" + matiere + "\n")
-        print("Course added successfully")
+        print("Coura jouté avec succès")
     else:
-        print("The course already exists")
+        print("le cour existe déjà")
