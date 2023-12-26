@@ -1,0 +1,51 @@
+A = open('etudiants.txt',"w")
+B = open('enseignats.txt',"w")
+C = open('cours.txt',"w")
+
+def EtudiantExiste(code):
+    with open('etudiants.txt', 'r') as A:
+        for ligne in A:
+            R = ligne.split('\n')
+            if R[0] == code:
+                return True
+        return False
+
+def AjouterEtudiants(code, nom, prenom, filiere, niveau, rentree):
+    if not EtudiantExiste(code):
+        with open('etudiants.txt', 'a') as A:
+            A.write(code + "\n" + nom + "\n" + prenom + "\n" + filiere + "\n" + niveau + "\n" + rentree + "\n")
+        print("Étudiant ajouté avec succès")
+    else:
+        print("L'étudiant existe déjà")
+
+def EnseignantExiste(code):
+    with open('enseignats.txt', 'r') as B:
+        for ligne in B:
+            R = ligne.split('\n')
+            if R[0] == code:
+                return True
+        return False
+
+def AjouterEnseignants(code, nom, prenom, matiere):
+    if not EnseignantExiste(code):
+        with open('enseignats.txt', 'a') as B:
+            B.write(code + "\n" + nom + "\n" + prenom + "\n" + matiere + "\n")
+        print("Enseignant ajouté avec succès")
+    else:
+        print("L'enseignant existe déjà")
+
+def CourExists(code):
+    with open('cours.txt', 'r') as file_courses:
+        for line in file_courses:
+            parts = line.split('\n')
+            if parts[0] == code:
+                return True
+        return False
+
+def AjouterCour(code, titre,matiere):
+    if not CourExists(code):
+        with open('courses.txt', 'a') as C:
+            C.write(code + "\n" + titre + "\n" + matiere + "\n")
+        print("Course added successfully")
+    else:
+        print("The course already exists")
